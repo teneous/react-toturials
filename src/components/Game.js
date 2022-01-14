@@ -5,7 +5,6 @@ class Game extends React.Component {
     render() {
         return (
             <div className="game">
-                123
                 <div className="game-board">
                     <Board/>
                 </div>

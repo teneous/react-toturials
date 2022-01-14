@@ -12,7 +12,9 @@ class Board extends React.Component {
     }
 
     handlerClick(i) {
+        // copy array
         const squares = this.state.squares.slice()
+        // the game is already finished
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -29,10 +31,16 @@ class Board extends React.Component {
     }
 
     render() {
-        const status = "Next Player:X"
+        const winner = calculateWinner(this.state.squares)
+        let msg
+        if (winner) {
+            msg = "The Winner:" + winner
+        } else {
+            msg = "Next Player:" + (this.state.xIsNext ? "X" : "O")
+        }
         return (
             <div>
-                <div className="status">{status}</div>
+                <div className="status">{msg}</div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
